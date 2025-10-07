@@ -1,0 +1,2 @@
+port_from,port_to,voyage_start,voyage_end,voyage_duration_hours,distance_nm,avg_sog,max_sog,fuel_total_kg,fuel_per_nm,energy_kwh_total,energy_kwh_prod,energy_kwh_net,peak_kw,peak_time,whr_total_prod,whr_total_cons,whr_util_rate
+"San Juan, Puerto Rico","Miami, Florida",2025-09-03 19:35:00+00:00,2025-09-06 08:45:00+00:00,61.166666666666664,1002.3488893333333,16.381630441576085,23.296667,344559.02810008335,343.7515936484462,792467.4972272499,2151711.5750015,-1359244.0777742502,1155.993333,2025-09-04 05:15:00+00:00,1529613.80319875,544015.7929083332,52.34813204619566

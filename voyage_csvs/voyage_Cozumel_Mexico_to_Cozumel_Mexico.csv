@@ -1,0 +1,2 @@
+port_from,port_to,voyage_start,voyage_end,voyage_duration_hours,distance_nm,avg_sog,max_sog,fuel_total_kg,fuel_per_nm,energy_kwh_total,energy_kwh_prod,energy_kwh_net,peak_kw,peak_time,whr_total_prod,whr_total_cons,whr_util_rate
+"Cozumel, Mexico","Cozumel, Mexico",2025-10-01 23:15:00+00:00,2025-10-02 07:10:00+00:00,7.916666666666667,142.33750008333334,17.866423625,23.426667,45409.77958058333,319.0289245911835,105581.93888841665,279499.49722208333,-173917.55833366668,1282.3666660000001,2025-10-02 05:20:00+00:00,182873.58809816666,56255.04611508333,58.83073103125

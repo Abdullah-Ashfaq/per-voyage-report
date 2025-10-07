@@ -1,0 +1,258 @@
+{
+  "icon1": {
+    "Total Fuel Consumption (LNG eq.)": {
+      "Signal": "fuel_cons_mach_me_lngeq_tot_flow",
+      "Method": "Sum",
+      "Title": "LNG equivalent ME fuel consumption",
+      "Description": "ME LNG equivalent fuel consumption",
+      "Unit": "kg/h"
+    },
+    "Total LNG Consumption": {
+      "Signal": "fuel_cons_mach_me_lng_tot_flow",
+      "Method": "Sum",
+      "Title": "Total ME LNG fuel flow",
+      "Description": "Total ME LNG fuel flow",
+      "Unit": "kg/h"
+    },
+    "Total MGO Consumption": {
+      "Signal": "fuel_cons_mach_incinerator_na_mgo_flow",
+      "Method": "Sum",
+      "Title": "Total incinerator MGO flow",
+      "Description": "Total incinerator MGO flow",
+      "Unit": "kg/h"
+    },
+    "Total Auxiliary Boiler Fuel Consumption": {
+      "Signal": "fuel_cons_mach_auxboiler_na_tot_flow",
+      "Method": "Sum",
+      "Title": "Total Auxiliary boiler fuel consumption",
+      "Description": "Total Auxiliary boiler fuel consumption",
+      "Unit": "kg/h"
+    },
+    "Avg Speed (SOG)": {
+      "Signal": "amb_meas_nav_speed_ground_1_speed",
+      "Method": "Mean",
+      "Title": "NMEA Ground speed",
+      "Description": "NMEA Ground speed",
+      "Unit": "kn"
+    },
+    "Avg Fresh Water Consumption": {
+      "Signal": "heat_cons_mach_whr_pw_tot_power",
+      "Method": "Mean",
+      "Title": "Total Potable water preheating heat consumption",
+      "Description": "Total potable water preheating WHR heat consumption",
+      "Unit": "kW"
+    },
+    "Avg Propulsion Power": {
+      "Signal": "elec_cons_mach_prop_aux_tot_power",
+      "Method": "Mean",
+      "Title": "Propulsion auxiliary power",
+      "Description": "Propulsion auxiliary electrical power",
+      "Unit": "kW"
+    },
+    "Avg Service Power": {
+      "Signal": "elec_cons_hvac_service_ahu_tot_power",
+      "Method": "Mean",
+      "Title": "Service AHU total power",
+      "Description": "Service AHU electrical power",
+      "Unit": "kW"
+    },
+    "Avg AC Chiller Power": {
+      "Signal": "elec_cons_hotel_icerink_chiller_tot_power",
+      "Method": "Mean",
+      "Title": "Ice rink chiller total electrical power",
+      "Description": "Ice rink chiller electrical power",
+      "Unit": "kW"
+    },
+    "Avg Hotel Power": {
+      "Signal": "elec_cons_hotel_galley_crew_tot_power",
+      "Method": "Mean",
+      "Title": "Crew galley power",
+      "Description": "Crew galley electrical power",
+      "Unit": "kW"
+    },
+    "Avg Machinery Power": {
+      "Signal": "elec_cons_mach_awp_na_tot_power",
+      "Method": "Mean",
+      "Title": "AWP total power",
+      "Description": "AWP electrical power",
+      "Unit": "kW"
+    },
+    "Total Electricity Consumption": {
+      "Signal": "elec_cons_service_na_na_tot_power",
+      "Method": "Sum",
+      "Title": "Total electrical power consumption",
+      "Description": "Total electrical power consumption",
+      "Unit": "kW"
+    },
+    "Total Electricity Production": {
+      "Signal": "elec_prod_mach_na_na_tot_power",
+      "Method": "Sum",
+      "Title": "Total ME electrical power production",
+      "Description": "Total ME electrical power production",
+      "Unit": "kW"
+    },
+    "Avg Humidity (Outside Air)": {
+      "Signal": "amb_meas_nav_humidity_air_outside_1",
+      "Method": "Mean",
+      "Title": "Ambient air relative humidity (MODBUS)",
+      "Description": "Ambient air relative humidity (MODBUS)",
+      "Unit": "RH-%"
+    },
+    "Avg Temperature (Outside Air)": {
+      "Signal": "amb_meas_nav_temp_air_outside_1",
+      "Method": "Mean",
+      "Title": "Air temperature",
+      "Description": "Air temperature (NMEA)",
+      "Unit": "\u00b0C"
+    },
+    "Avg Seawater Temperature": {
+      "Signal": "amb_meas_nav_temp_sea_water_1",
+      "Method": "Mean",
+      "Title": "Seawater temperature",
+      "Description": "Seawater temperature",
+      "Unit": "\u00b0C"
+    },
+    "Avg Air Enthalpy (Outside)": {
+      "Signal": "amb_meas_nav_enthalpy_air_outside_na",
+      "Method": "Mean",
+      "Title": "Air enthalpy",
+      "Description": "Outside air enthalpy",
+      "Unit": "kJ/kg"
+    },
+    "Total ME CO2 Emissions": {
+      "Signal": "misc_ind_mach_incinerator_co2_tot_emission",
+      "Method": "Sum",
+      "Title": "Incinerator CO\u00b2 emissions",
+      "Description": "Incinerator CO2 emissions",
+      "Unit": "kg/h"
+    },
+    "Avg ME 1 Load": {
+      "Signal": "elec_prod_mach_me_na_1_load",
+      "Method": "Mean",
+      "Title": "ME 1 Load",
+      "Description": "ME 1 Load",
+      "Unit": "%"
+    },
+    "Avg ME 2 Load": {
+      "Signal": "elec_prod_mach_me_na_2_load",
+      "Method": "Mean",
+      "Title": "ME 2 Load",
+      "Description": "ME 2 Load",
+      "Unit": "%"
+    },
+    "Avg ME 3 Load": {
+      "Signal": "elec_prod_mach_me_na_3_load",
+      "Method": "Mean",
+      "Title": "ME 3 Load",
+      "Description": "ME 3 Load",
+      "Unit": "%"
+    },
+    "Avg ME 4 Load": {
+      "Signal": "elec_prod_mach_me_na_4_load",
+      "Method": "Mean",
+      "Title": "ME 4 Load",
+      "Description": "ME 4 Load",
+      "Unit": "%"
+    },
+    "Avg ME 5 Load": {
+      "Signal": "elec_prod_mach_me_na_5_load",
+      "Method": "Mean",
+      "Title": "ME 5 Load",
+      "Description": "ME 5 Load",
+      "Unit": "%"
+    },
+    "Avg ME 6 Load": {
+      "Signal": "elec_prod_mach_me_na_6_load",
+      "Method": "Mean",
+      "Title": "ME 6 Load",
+      "Description": "ME 6 Load",
+      "Unit": "%"
+    },
+        "Total WHR Production": {
+      "Signal": "heat_prod_mach_heat_na_tot_power",
+      "Method": "Sum",
+      "Title": "Total steam and HT heat production",
+      "Description": "All waste heat produced (steam + HT)",
+      "Unit": "kW"
+    },
+    "Total WHR Consumption": {
+      "Signal": "heat_cons_mach_whr_na_tot_power",
+      "Method": "Sum",
+      "Title": "Total WHR consumption",
+      "Description": "All waste heat consumed",
+      "Unit": "kW"
+    },
+    "WHR Utilization Rate": {
+      "Signal": "heat_cons_mach_whr_na_tot_ratio",
+      "Method": "Mean",
+      "Title": "WHR utilization rate",
+      "Description": "Percentage of waste heat recovered/used",
+      "Unit": "%"
+    },
+    "Total WHR Losses (HT Dump)": {
+      "Signal": "heat_cons_mach_ht_dump_tot_power",
+      "Method": "Sum",
+      "Title": "Total HT heat dumped",
+      "Description": "Waste HT heat lost",
+      "Unit": "kW"
+    },
+    "Total WHR Losses (Steam Dump)": {
+      "Signal": "heat_cons_mach_steam_dump_tot_power",
+      "Method": "Sum",
+      "Title": "Total steam dumped",
+      "Description": "Steam heat wasted",
+      "Unit": "kW"
+    },
+
+    "WHR Absorption Chiller": {
+      "Signal": "heat_cons_mach_whr_abs_tot_power",
+      "Method": "Sum",
+      "Title": "Absorption chiller WHR use",
+      "Description": "WHR used by absorption chillers",
+      "Unit": "kW"
+    },
+    "WHR Condensate Heater": {
+      "Signal": "heat_cons_mach_whr_condensate_tot_power",
+      "Method": "Sum",
+      "Title": "WHR condensate heater",
+      "Description": "WHR used by condensate heater",
+      "Unit": "kW"
+    },
+    "WHR Evaporators": {
+      "Signal": "heat_cons_mach_whr_evap_1_power",
+      "Method": "Sum",
+      "Title": "WHR evaporator heating",
+      "Description": "WHR used by evaporators",
+      "Unit": "kW"
+    },
+    "WHR Laundry": {
+      "Signal": "heat_cons_mach_whr_laundry_tot_power",
+      "Method": "Sum",
+      "Title": "WHR laundry heating",
+      "Description": "WHR used by laundry",
+      "Unit": "kW"
+    },
+    "WHR Potable Water Heating": {
+      "Signal": "heat_cons_mach_whr_pw_tot_power",
+      "Method": "Sum",
+      "Title": "WHR potable water heating",
+      "Description": "WHR used for potable water preheating",
+      "Unit": "kW"
+    },
+    "WHR AC Reheating": {
+      "Signal": "heat_cons_mach_whr_reheat_na_power",
+      "Method": "Sum",
+      "Title": "WHR AC reheating",
+      "Description": "WHR used in AC reheating system",
+      "Unit": "kW"
+    },
+    "WHR Other Uses": {
+      "Signal": "heat_cons_mach_whr_other_tot_power",
+      "Method": "Sum",
+      "Title": "Other WHR consumption",
+      "Description": "Other WHR consumption",
+      "Unit": "kW"
+    }
+
+  }
+}
