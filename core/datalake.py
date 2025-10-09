@@ -167,7 +167,7 @@ def get_voyage_data(ship_container: str) -> pd.DataFrame:
     fs = dlsc.get_file_system_client(container_ports)
 
     base_path = f"{ship_container}/port-data"
-    month_paths = _recent_months_path(base_path, 3)
+    month_paths = _recent_months_path(base_path, 6)
     _log(f"📂 Scanning last 3 months of port-data under: {container_ports}/{base_path}")
 
     names: List[str] = []

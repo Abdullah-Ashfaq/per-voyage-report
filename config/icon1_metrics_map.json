@@ -7,11 +7,25 @@
       "Description": "ME LNG equivalent fuel consumption",
       "Unit": "kg/h"
     },
+    "Total Targeted Fuel Consumption (LNG eq.)": {
+      "Signal": "fuel_cons_mach_me_lngeq_tot_flow_target",
+      "Method": "Sum",
+      "Title": "Targeted LNG equivalent ME fuel consumption",
+      "Description": "Targeted ME LNG equivalent fuel consumption",
+      "Unit": "kg/h"
+    },
     "Total LNG Consumption": {
       "Signal": "fuel_cons_mach_me_lng_tot_flow",
       "Method": "Sum",
       "Title": "Total ME LNG fuel flow",
       "Description": "Total ME LNG fuel flow",
+      "Unit": "kg/h"
+    },
+    "Total Targeted LNG Consumption": {
+      "Signal": "fuel_cons_mach_me_lng_tot_flow_target",
+      "Method": "Sum",
+      "Title": "Targeted ME LNG fuel flow",
+      "Description": "Targeted ME LNG fuel flow",
       "Unit": "kg/h"
     },
     "Total MGO Consumption": {
@@ -82,6 +96,13 @@
       "Method": "Sum",
       "Title": "Total electrical power consumption",
       "Description": "Total electrical power consumption",
+      "Unit": "kW"
+    },
+    "Total Targeted Electricity Consumption": {
+      "Signal": "elec_cons_service_na_na_tot_power_target",
+      "Method": "Sum",
+      "Title": "Targeted total electrical power consumption",
+      "Description": "Targeted total electrical power consumption",
       "Unit": "kW"
     },
     "Total Electricity Production": {
@@ -168,7 +189,7 @@
       "Description": "ME 6 Load",
       "Unit": "%"
     },
-        "Total WHR Production": {
+      "Total WHR Productioheat_prod_machn": {
       "Signal": "heat_prod_mach_heat_na_tot_power",
       "Method": "Sum",
       "Title": "Total steam and HT heat production",
@@ -180,6 +201,13 @@
       "Method": "Sum",
       "Title": "Total WHR consumption",
       "Description": "All waste heat consumed",
+      "Unit": "kW"
+    },
+    "Total Targeted WHR Consumption": {
+      "Signal": "heat_cons_mach_whr_na_tot_power_target",
+      "Method": "Sum",
+      "Title": "Targeted total WHR consumption",
+      "Description": "Targeted total waste heat consumed",
       "Unit": "kW"
     },
     "WHR Utilization Rate": {
@@ -252,6 +280,27 @@
       "Title": "Other WHR consumption",
       "Description": "Other WHR consumption",
       "Unit": "kW"
+    },
+    "Relative Wind Speed": {
+      "Signal": "amb_meas_nav_speed_wind_1_relative",
+      "Method": "Mean",
+      "Title": "Relative wind speed",
+      "Description": "Relative wind speed",
+      "Unit": "kn"
+    },
+    "Relative Wind Direction": {
+      "Signal": "amb_meas_nav_direction_wind_1_relative",
+      "Method": "Mean",
+      "Title": "Relative wind direction",
+      "Description": "Relative wind direction",
+      "Unit": "deg"
+    },
+    "True North Wind Speed": {
+      "Signal": "amb_meas_nav_speed_wind_1_true",
+      "Method": "Mean",
+      "Title": "True North wind speed",
+      "Description": "True wind speed",
+      "Unit": "kn"
     }
 
   }

@@ -41,6 +41,16 @@ class KPIResult:
     cop_proxy: Optional[float] = None
     # AI Suggestions 
     ai_suggestions: Optional[str] = None
+    # wind data
+    relative_wind_speed_avg: Optional[float] = None
+    relative_wind_direction_avg: Optional[float] = None
+    true_north_wind_speed_avg: Optional[float] = None
+
+    # targeted signals
+    total_targeted_fuel_consumption_lngeq: Optional[float] = None
+    total_targeted_lng_consumption: Optional[float] = None
+    total_targeted_electricity_consumption: Optional[float] = None
+    total_targeted_whr_consumption: Optional[float] = None
 
     # optional extras
     engine_stats: List[Dict] = None   # NEW: [{name, avg_load}]
@@ -202,6 +212,34 @@ def compute_kpis_from_json(
             if s is not None and not s.empty:
                 avg_val = float(s.mean())
                 engine_stats.append({"name": key, "avg_load": avg_val})
+    # ----- targered signals -----
+    targeted_signals = {
+        "Total Targeted Fuel Consumption (LNG eq.)": "total_targeted_fuel_consumption_lngeq",
+        "Total Targeted LNG Consumption": "total_targeted_lng_consumption",
+        "Total Targeted Electricity Consumption": "total_targeted_electricity_consumption",
+        "Total Targeted WHR Consumption": "total_targeted_whr_consumption",
+    }
+    targeted_values = {}
+    for key, attr in targeted_signals.items():
+        if key in metrics:
+            m = metrics[key]
+            val = compute_metric(df, m["Signal"], m["Method"])
+            if val is not None:
+                targeted_values[attr] = val
+    # ----- Wind data -----
+    wind_signals = {
+        "Relative Wind Speed": "relative_wind_speed_avg",
+        "Relative Wind Direction": "relative_wind_direction_avg",
+        "True North Wind Speed": "true_north_wind_speed_avg",
+    }
+    wind_values = {}
+    for key, attr in wind_signals.items():
+        if key in metrics:
+            m = metrics[key]
+            s = _get_series(df, m["Signal"])
+            if s is not None and not s.empty:
+                avg_val = float(s.mean())
+                wind_values[attr] = avg_val
 
     return KPIResult(
         distance_nm=distance_nm,
@@ -224,6 +262,8 @@ def compute_kpis_from_json(
         whr_util_rate=whr_util_rate,
         whr_losses=whr_losses,
         whr_consumers=whr_consumers,
+        **targeted_values,
+        **wind_values,
     )
 
 

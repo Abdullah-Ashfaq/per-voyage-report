@@ -8,4 +8,6 @@ __pycache__/
 venv/
 .env/
 *.env
+# voyage csv files
+voyage_csvs/
 
