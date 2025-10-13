@@ -1,4 +1,3 @@
-# metrics_map.py
 import json
 import pandas as pd
 import numpy as np
@@ -7,9 +6,8 @@ from typing import Dict, Any
 
 # ---------------- JSON LOADER ----------------
 
-import json
-
 def load_metrics_map(metrics_json: str, ship_name: str) -> dict:
+    """Load the metrics mapping JSON for a specific ship."""
     with open(metrics_json, "r") as f:
         all_map = json.load(f)
     return all_map.get(ship_name, {})
@@ -41,23 +39,52 @@ def _sum_positive_diffs(series: pd.Series, scale: float = 1.0) -> float:
     return float(diffs.sum() * scale)
 
 
-def compute_metric(df: pd.DataFrame, signal: str, method: str) -> float:
+# ---------------- CORE METRIC COMPUTATION ----------------
+def compute_metric(df: pd.DataFrame, signal: str, method: str, unit: str | None = None) -> float:
     """
-    Compute a metric from dataframe based on method:
-    - "Sum" → integrate a rate signal
-    - "Mean" → average
-    - "Counter" → positive diffs of counter
+    Compute a metric from dataframe based on method and apply unit conversion.
+      • method: Sum | Mean | Counter
+      • unit: optional engineering unit string (e.g. 'kW', 'kg/h', 'kn')
     """
     if signal not in df.columns:
         return np.nan
 
-    series = df[signal].dropna()
+    series = pd.to_numeric(df[signal], errors="coerce").dropna()
+    if series.empty:
+        return np.nan
 
-    if method.lower() == "sum":
-        return _integrate_rate(series)
-    elif method.lower() == "mean":
-        return float(series.mean())
-    elif method.lower() == "counter":
-        return _sum_positive_diffs(series)
+    # --- Base calculation ---
+    method = method.lower()
+    if method == "sum":
+        total = _integrate_rate(series)
+    elif method == "mean":
+        total = float(series.mean())
+    elif method == "counter":
+        total = _sum_positive_diffs(series)
     else:
         raise ValueError(f"Unknown method '{method}' for signal '{signal}'")
+
+    # --- Apply 5-minute-interval unit conversions ---
+    if unit:
+        u = unit.strip().lower()
+
+        if u == "kn":          # knots → nautical miles (5-min interval)
+            return total / 12.0
+
+        if u in ("kg/h", "kgh"):   # kilograms/hour → tonnes
+            return total / 1000.0
+
+        if u in ("kw",):       # kilowatts → megawatt-hours (5-min)
+            return total / (12.0 * 1000.0)
+
+        if u in ("m³/h", "m3/h", "m3h"):
+            return total / 12.0
+
+        if u in ("m³/day", "m3/day", "m3d"):
+            return total / (12.0 * 24.0)
+
+        if u in ("m/s", "ms"):
+            return total * 3.6
+
+    # No conversion or unknown unit
+    return float(total)

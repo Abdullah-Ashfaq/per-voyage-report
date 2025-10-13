@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Voyage Report - icon1</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        background-color: #f5f7fa;
+        color: #222;
+        margin: 0; padding: 0;
+    }
+    .header {
+        background-color: #002b5b;
+        color: white;
+        padding: 16px 30px;
+    }
+    .header h1 {
+        margin: 0;
+        font-size: 22px;
+    }
+    .header .subtitle {
+        font-size: 14px;
+        color: #b0d0ff;
+    }
+    .container {
+        padding: 20px 40px;
+    }
+    .section {
+        background: white;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        padding: 20px;
+    }
+    .section h2 {
+        margin-top: 0;
+        border-bottom: 2px solid #004b8d;
+        padding-bottom: 6px;
+        font-size: 18px;
+        color: #004b8d;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+    th, td {
+        text-align: left;
+        padding: 8px 10px;
+        border-bottom: 1px solid #eee;
+    }
+    th {
+        background-color: #004b8d;
+        color: white;
+        font-size: 13px;
+    }
+    tr:hover {
+        background-color: #f0f6ff;
+    }
+    .metric-name { width: 60%; }
+    .metric-value { text-align: right; font-weight: 600; }
+    .footer {
+        text-align: center;
+        color: #666;
+        font-size: 12px;
+        padding: 10px;
+        margin-top: 40px;
+    }
+</style>
+</head>
+<body>
+<div class="header">
+    <h1>Voyage Report - icon1</h1>
+    <div class="subtitle">Philipsburg, St. Maarten → Charlotte Amalie, St. Thomas</div>
+</div>
+
+<div class="container">
+
+    <div class="section">
+        <h2>Voyage Summary</h2>
+        <table>
+            <tr><th>Parameter</th><th>Value</th></tr>
+            <tr><td>From</td><td>Philipsburg, St. Maarten</td></tr>
+            <tr><td>To</td><td>Charlotte Amalie, St. Thomas</td></tr>
+            <tr><td>Start</td><td>2025-10-07T22:20:00+00:00</td></tr>
+            <tr><td>End</td><td>2025-10-08T11:20:00+00:00</td></tr>
+            <tr><td>Duration</td><td>13.0 h</td></tr>
+            <tr><td>Distance</td><td>0.75 NM</td></tr>
+            <tr><td>Average Speed</td><td>8.99 kn</td></tr>
+            <tr><td>Max Speed</td><td>13.22 kn</td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Fuel & Energy KPIs</h2>
+        <table>
+            <tr><th class="metric-name">Metric</th><th>Value</th></tr>
+            <tr><td>Total Fuel Used</td><td>38.86 tonnes</td></tr>
+            <tr><td>Fuel per Nautical Mile</td><td>51.9 t/NM</td></tr>
+            <tr><td>Electricity Produced</td><td>17.8 MWh</td></tr>
+            <tr><td>Electricity Consumed</td><td>12.71 MWh</td></tr>
+            <tr><td>Net Energy</td><td>-5.08 MWh</td></tr>
+            <tr><td>Peak Power</td><td>918.74 kW at 2025-10-07T23:15:00+00:00</td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Waste Heat Recovery (WHR)</h2>
+        <table>
+            <tr><th>Parameter</th><th>Value</th></tr>
+            <tr><td>WHR Produced</td><td>nan</td></tr>
+            <tr><td>WHR Consumed</td><td>6.080978832465277</td></tr>
+            <tr><td>Utilization Rate</td><td>65.22 %</td></tr>
+            <tr><td>Losses (Steam Dump)</td><td>2.181438934006944</td></tr>
+            <tr><td>Losses (HT Dump)</td><td>1.5916668862083334</td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Environmental Conditions</h2>
+        <table>
+            <tr><th>Parameter</th><th>Value</th></tr>
+            <tr><td>Relative Wind Speed</td><td>7.79 kn</td></tr>
+            <tr><td>True North Wind Speed</td><td>13.82 kn</td></tr>
+            <tr><td>Relative Wind Direction</td><td>180.4°</td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Target Comparison</h2>
+        <table>
+            <tr><th>Target KPI</th><th>Actual</th><th>Target</th></tr>
+            <tr><td>Fuel (Tonnes)</td><td>38.86</td><td>37.82</td></tr>
+            <tr><td>LNG (Tonnes)</td><td>23.26</td><td>22.27</td></tr>
+            <tr><td>Electricity (MWh)</td><td>12.71</td><td>12.74</td></tr>
+            <tr><td>WHR (MWh)</td><td>6.08</td><td>5.87</td></tr>
+        </table>
+    </div>
+
+    
+
+</div>
+
+<div class="footer">
+    Generated automatically by Voyage KPI System | © 2025
+</div>
+</body>
+</html>

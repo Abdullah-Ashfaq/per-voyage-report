@@ -3,36 +3,47 @@ from typing import Dict
 import pandas as pd
 from core.kpis import compute_kpis_from_json, KPIResult
 
-from dataclasses import asdict
-
 def compute_voyage_kpis(
     signals_df: pd.DataFrame,
     metrics: Dict[str, Dict],
     voyage: Dict
-) -> Dict:
+) -> KPIResult:
     """
     Compute KPIs for a voyage timeframe using the main KPI engine (kpis.py).
-    Attaches voyage metadata and returns a dict ready for CSV export.
+    Attaches voyage metadata and flattens all dict-based KPIs for easy CSV export.
     """
     kpi = compute_kpis_from_json(signals_df, metrics)
 
     # Attach voyage metadata
-    kpi.voyage_from = voyage["from"]
-    kpi.voyage_to = voyage["to"]
-    kpi.voyage_start = voyage["start"]
-    kpi.voyage_end = voyage["end"]
-    kpi.voyage_duration_hours = voyage["duration_hours"]
+    kpi.voyage_from = voyage.get("from")
+    kpi.voyage_to = voyage.get("to")
+    kpi.voyage_start = voyage.get("start")
+    kpi.voyage_end = voyage.get("end")
+    kpi.voyage_duration_hours = voyage.get("duration_hours")
 
-    # Convert dataclass → dict (so we can easily merge with metadata)
-    kpi_dict = asdict(kpi)
+    # Flatten nested dicts
+    flattened = {}
+    for key, val in kpi.__dict__.items():
+        if isinstance(val, dict):
+            for subkey, subval in val.items():
+                clean = (
+                    subkey.replace(" ", "_")
+                    .replace("(", "")
+                    .replace(")", "")
+                    .replace("/", "_")
+                )
+                flattened[f"{key}_{clean}"] = subval
+        else:
+            flattened[key] = val
 
-    # Add metadata fields
-    kpi_dict.update({
-        "port_from": voyage["from"],
-        "port_to": voyage["to"],
-        "voyage_start": voyage["start"],
-        "voyage_end": voyage["end"],
-        "voyage_duration_hours": voyage["duration_hours"],
-    })
+    # Attach flattened metrics as top-level attributes
+    for k, v in flattened.items():
+        setattr(kpi, k, v)
 
-    return kpi_dict
+    # Convert timestamps to ISO strings for readable CSVs
+    for t in ["voyage_start", "voyage_end", "peak_time"]:
+        val = getattr(kpi, t, None)
+        if isinstance(val, pd.Timestamp):
+            setattr(kpi, t, val.isoformat())
+
+    return kpi
