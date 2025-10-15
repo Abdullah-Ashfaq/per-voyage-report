@@ -1,3 +1,4 @@
+# core/kpis.py
 from __future__ import annotations
 from dataclasses import dataclass
 from typing import Dict, List, Optional, Tuple
@@ -5,12 +6,8 @@ from typing import Dict, List, Optional, Tuple
 import numpy as np
 import pandas as pd
 
-# Helpers come from metrics_map.py (JSON loader + math helpers)
-from core.metrics_map import (
-    _dt_hours,          # dt in hours
-    _integrate_rate,    # integrate a rate (kW, kg/h) -> kWh, kg
-    compute_metric,     # compute(df, signal, method, unit)
-)
+# Helpers from metrics_map.py (no integrate now)
+from core.metrics_map import compute_metric
 
 
 # ========================== Dataclass ==========================
@@ -69,6 +66,7 @@ def compute_kpis_from_json(
 ) -> KPIResult:
     """
     Compute KPIs from JSON-defined metrics, applying unit conversions where needed.
+    (Distance is now calculated later using avg_sog × duration.)
     """
     df = df24.copy()
     if df.index.tz is None:
@@ -79,9 +77,9 @@ def compute_kpis_from_json(
     sog = _get_series(df, sog_meta["Signal"]) if sog_meta else None
     avg_sog = float(sog.mean()) if sog is not None else None
     max_sog = float(sog.max()) if sog is not None else None
+
+    # Skip distance_nm here — handled in voyage_kpis.py
     distance_nm = None
-    if sog_meta:
-        distance_nm = compute_metric(df, sog_meta["Signal"], sog_meta.get("Method", "Sum"), sog_meta.get("Unit"))
 
     # ----- Fuel -----
     fuel_keys = [
@@ -147,16 +145,14 @@ def compute_kpis_from_json(
         peak_time = total_power.idxmax()
         peak_kw = float(total_power.loc[peak_time])
 
+    # Compute total energy of top components directly (using compute_metric)
     energy_top: List[Tuple[str, float]] = []
     for key in peak_components:
         meta = metrics.get(key)
         if not meta:
             continue
-        s = _get_series(df, meta["Signal"])
-        if s is None:
-            continue
-        kwh = _integrate_rate(s)  # integrate directly, unit handled internally
-        energy_top.append((key, float(kwh)))
+        val = compute_metric(df, meta["Signal"], meta.get("Method", "Sum"), meta.get("Unit"))
+        energy_top.append((key, float(val)))
     energy_top.sort(key=lambda x: -x[1])
     energy_top = energy_top[:5]
 

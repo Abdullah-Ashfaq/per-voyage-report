@@ -55,7 +55,7 @@ if __name__ == "__main__":
     SHIP_CONTAINER = "icon1"
     SHIP_NAME = "icon1"
     METRICS_JSON = "config/icon1_metrics_map.json"
-    OUTPUT_DIR = "./voyage_reports"
+    OUTPUT_DIR = "./voyage_csvs"
 
     mode = os.getenv("RUN_MODE", "manual").lower()  # 'manual' or 'auto'
 
