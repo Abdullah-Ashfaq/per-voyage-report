@@ -5,6 +5,7 @@ import numpy as np
 from core.voyage_state import detect_and_process_new_voyages
 from reports.voyage_report_html import render_voyage_html_report
 from reports.emailer import send_voyage_report_email
+from AI.gpt4_prompt import get_ai_suggestions
 
 
 def run_voyage_report(
@@ -79,6 +80,17 @@ def run_voyage_report(
                 print("Not enough voyages for baseline calculation.")
         except Exception as e:
             print(f"Baseline computation failed: {e}")
+        
+        # --- AI Suggestions ---
+        try:
+            print("Generating AI suggestions...")
+            ai_suggestions = get_ai_suggestions(latest_voyage_row, baseline)
+            print(f"AI Suggestions generated: {ai_suggestions}")
+            latest_voyage_row["ai_suggestions"] = ai_suggestions
+            print(f"AI Suggestions: {ai_suggestions}")
+        except Exception as e:
+            print(f"AI suggestions generation failed: {e}")
+            latest_voyage_row["ai_suggestions"] = "N/A"
 
         # Generate HTML report
         print("Rendering voyage report with baseline comparison...")
