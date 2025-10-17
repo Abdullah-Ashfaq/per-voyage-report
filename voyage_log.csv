@@ -1,2 +1,2 @@
 from,to,start,end,duration_hours,report_file
-"Miami, Florida","Charlotte Amalie, St. Thomas",2025-10-11T21:00:00+00:00,2025-10-14T11:55:00+00:00,62.916666666666664,./voyage_csvs\voyage_Miami_Florida_to_Charlotte_Amalie_St._Thomas.csv
+"Charlotte Amalie, St. Thomas","San Juan, Puerto Rico",2025-10-14T23:15:00+00:00,2025-10-15T10:55:00+00:00,11.666666666666666,./voyage_csvs\voyage_Charlotte_Amalie_St._Thomas_to_San_Juan_Puerto_Rico.csv

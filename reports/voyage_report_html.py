@@ -23,9 +23,9 @@ def _pct_diff(cur, ref):
         return "—", "gray"
     diff = (cur - ref) / ref * 100.0
     if diff > 0:
-        return f"↑ {round(diff,2)}%", "green"
+        return f"↑ {round(diff,2)}%", "red"
     elif diff < 0:
-        return f"↓ {round(abs(diff),2)}%", "red"
+        return f"↓ {round(abs(diff),2)}%", "green"
     else:
         return "→ 0%", "gray"
 
@@ -348,7 +348,7 @@ body {{
   padding: 24px 28px;
   background: linear-gradient(90deg, rgba(122,162,255,0.12), rgba(110,231,183,0.08));
   border-bottom: 1px solid var(--border);
-  position: sticky; top: 0; z-index: 10;
+  # position: fixed; top: 0; z-index: 10;
   text-align: center; /* centered header content */
 }}
 .header h1 {{
@@ -461,7 +461,7 @@ h4 {{ margin: 12px 0 8px; font-size: 13px; color: var(--brand); }}
 <body>
   <header class="header">
     <h1>Voyage Report – {ship_name}</h1>
-    <div class="sub">{{{{ kpi.port_from }}}} → {{{{ kpi.port_to }}}} • <span class="badge">Dark Mode</span></div>
+    <div class="sub">{{{{ kpi.port_from }}}} → {{{{ kpi.port_to }}}} </div>
   </header>
 
   <main class="container">
